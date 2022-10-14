@@ -17,4 +17,11 @@
     <string name="date_time" />
     <string name="date">Date</string>
     <string name="please_enter_your_first_name">Please, enter your first name</string>
+    <string name="select_a_date_in_the_calendar">Select a date in the calendar</string>
+    <string name="enter_your_email_address">Enter your email address</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="enter_your_age">Enter your age</string>
+    <string name="enter_your_phone">Enter your phone</string>
+    <string name="enter_your_first_name">Enter your first name</string>
+    <string name="something_info_about_you">Something info about you</string>
 </resources>

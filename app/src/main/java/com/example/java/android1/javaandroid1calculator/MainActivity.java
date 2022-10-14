@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.form_layout);
-
         CalendarView calendarView = findViewById(R.id.calendar_view);
         calendarView.setVisibility(View.INVISIBLE);
         EditText dateTime = findViewById(R.id.date_field);
