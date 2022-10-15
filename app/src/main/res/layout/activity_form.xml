@@ -4,12 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/main_window"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="left"
+        android:text="@string/main_activity" />
+
     <EditText
         android:id="@+id/text_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/something_info_about_you"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/name_field"
@@ -60,10 +68,10 @@
         android:id="@+id/date_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/select_a_date_in_the_calendar"
-        android:minHeight="48dp"
         android:cursorVisible="false"
-        android:focusableInTouchMode="false" />
+        android:focusableInTouchMode="false"
+        android:hint="@string/select_a_date_in_the_calendar"
+        android:minHeight="48dp" />
 
     <CalendarView
         android:id="@+id/calendar_view"

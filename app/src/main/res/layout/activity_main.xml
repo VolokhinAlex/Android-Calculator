@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/form_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="@string/form_activity" />
+
     <TextView
         android:id="@+id/text_view1"
         android:layout_width="match_parent"
@@ -17,30 +24,37 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_margin="10dp"
             android:hint="@string/please_enter_your_first_name"
             android:inputType="text"
-            android:minHeight="48dp"
-            tools:ignore="LabelFor"
-            android:layout_margin="10dp"/>
+            android:minHeight="48dp" />
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/show_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/click"
             android:textColor="@color/white" />
 
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/first_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/first_name"
+        android:textAlignment="center"
+        android:textSize="23sp"
+        android:textColor="@color/black"/>
 
     <Switch
         android:id="@+id/switch_turn"

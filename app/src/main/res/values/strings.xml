@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JavaAndroid1 Calculator</string>
+    <string name="app_name">First App</string>
     <string name="click">Click</string>
     <string name="light_on">Light on</string>
     <string name="turn_on">Turn on</string>
@@ -24,4 +24,7 @@
     <string name="enter_your_phone">Enter your phone</string>
     <string name="enter_your_first_name">Enter your first name</string>
     <string name="something_info_about_you">Something info about you</string>
+    <string name="form_activity">Form Activity</string>
+    <string name="main_activity">Main Activity</string>
+    <string name="first_name">First Name</string>
 </resources>
