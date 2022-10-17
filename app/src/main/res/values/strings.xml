@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">First App</string>
     <string name="click">Click</string>
-    <string name="light_on">Light on</string>
+    <string name="show_text">Show Text</string>
     <string name="turn_on">Turn on</string>
     <string name="edittext">EditText</string>
     <string name="first_text_view">First Text View</string>
@@ -27,4 +27,5 @@
     <string name="form_activity">Form Activity</string>
     <string name="main_activity">Main Activity</string>
     <string name="first_name">First Name</string>
+    <string name="hello_android">Hello Android</string>
 </resources>
