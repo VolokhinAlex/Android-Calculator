@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<!--    <TextView-->
+<!--        android:id="@+id/display"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="1"-->
+<!--        android:textAlignment="textEnd"-->
+<!--        android:textColor="@color/design_default_color_primary"-->
+<!--        android:textSize="24sp" />-->
+
+    <androidx.constraintlayout.utils.widget.MotionLabel
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/display_text"
+        android:textSize="36sp"
+        android:gravity="end" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>
