@@ -6,7 +6,7 @@
 
     <Button
         android:id="@+id/button_percent"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_percent"
         android:textSize="@dimen/button_text_size"
@@ -15,11 +15,11 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="@dimen/margin_from_button" />
+        android:layout_marginEnd="@dimen/margin_from_button"/>
 
     <Button
         android:id="@+id/button_delete"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_delete"
         android:textSize="@dimen/button_text_size"
@@ -31,7 +31,7 @@
 
     <Button
         android:id="@+id/button_clear"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_clear"
         android:textSize="@dimen/button_text_size"
@@ -43,7 +43,7 @@
 
     <Button
         android:id="@+id/button_division"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_division"
         app:layout_constraintBottom_toTopOf="@id/button_multiplication"
@@ -53,7 +53,7 @@
 
     <Button
         android:id="@+id/button_seven"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_seven"
         android:textSize="@dimen/button_text_size"
@@ -66,7 +66,7 @@
 
     <Button
         android:id="@+id/button_eight"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_eight"
         android:textSize="@dimen/button_text_size"
@@ -78,7 +78,7 @@
 
     <Button
         android:id="@+id/button_nine"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_nine"
         android:textSize="@dimen/button_text_size"
@@ -90,7 +90,7 @@
 
     <Button
         android:id="@+id/button_multiplication"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_multiplication"
         android:textSize="@dimen/button_text_size"
@@ -101,7 +101,7 @@
 
     <Button
         android:id="@+id/button_four"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_four"
         android:textSize="@dimen/button_text_size"
@@ -114,7 +114,7 @@
 
     <Button
         android:id="@+id/button_five"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_five"
         android:textSize="@dimen/button_text_size"
@@ -126,7 +126,7 @@
 
     <Button
         android:id="@+id/button_six"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_six"
         android:textSize="@dimen/button_text_size"
@@ -138,7 +138,7 @@
 
     <Button
         android:id="@+id/button_minus"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_minus"
         android:textSize="@dimen/button_text_size"
@@ -149,7 +149,7 @@
 
     <Button
         android:id="@+id/button_one"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_one"
         android:textSize="@dimen/button_text_size"
@@ -162,7 +162,7 @@
 
     <Button
         android:id="@+id/button_two"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_two"
         android:textSize="@dimen/button_text_size"
@@ -174,7 +174,7 @@
 
     <Button
         android:id="@+id/button_three"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_three"
         android:textSize="@dimen/button_text_size"
@@ -186,7 +186,7 @@
 
     <Button
         android:id="@+id/button_plus"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_plus"
         android:textSize="@dimen/button_text_size"
@@ -205,27 +205,31 @@
         app:layout_constraintEnd_toStartOf="@+id/button_point"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@id/button_one"
-        app:layout_constraintTop_toBottomOf="@id/button_two" />
+        app:layout_constraintTop_toBottomOf="@id/button_two"
+        app:layout_constraintHorizontal_weight="2"/>
 
     <Button
         android:id="@+id/button_point"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_from_button"
         android:text="@string/button_pt"
         android:textSize="@dimen/button_text_size"
         app:layout_constraintEnd_toStartOf="@+id/button_result"
         app:layout_constraintStart_toEndOf="@id/button_zero"
-        app:layout_constraintTop_toBottomOf="@id/button_three" />
+        app:layout_constraintTop_toBottomOf="@id/button_three"
+        app:layout_constraintHorizontal_weight="1"/>
 
     <Button
         android:id="@+id/button_result"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/button_result"
         android:textSize="@dimen/button_text_size"
         app:layout_constraintEnd_toEndOf="@id/button_plus"
         app:layout_constraintStart_toEndOf="@id/button_point"
-        app:layout_constraintTop_toBottomOf="@id/button_plus" />
+        app:layout_constraintTop_toBottomOf="@id/button_plus"
+        app:layout_constraintHorizontal_weight="1"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

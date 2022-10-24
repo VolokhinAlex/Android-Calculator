@@ -16,7 +16,7 @@
     <string name="button_division">/</string>
     <string name="button_multiplication">*</string>
     <string name="button_result">=</string>
-    <string name="button_delete">^</string>
+    <string name="button_delete">⌫</string>
     <string name="button_clear">AC</string>
     <string name="button_percent">%</string>
     <string name="display_text">0</string>
