@@ -4,21 +4,21 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private StateSave stateSave;
     private final String DISPLAY_KEY = "DISPLAY";
-    private TextView display;
+    private TextView mDisplay;
+    private ButtonClickListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButtonClickListener listener = new ButtonClickListener(this);
-        display = findViewById(R.id.display);
+        listener = new ButtonClickListener(this);
+        mDisplay = findViewById(R.id.display);
     }
 
     @Override
@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         stateSave = savedInstanceState.getParcelable(DISPLAY_KEY);
-        display.setText(stateSave.getDisplayValue());
+        mDisplay.setText(stateSave.getDisplayValue());
+        listener.setOldNumber(stateSave.getDisplayValue());
+        listener.setOperator(stateSave.getOperator());
+        listener.setFlagIfValueFirst(stateSave.getFlagIfValueFirst());
     }
 }

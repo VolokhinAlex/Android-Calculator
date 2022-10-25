@@ -6,16 +6,23 @@ import android.widget.TextView;
 
 public class StateSave implements Parcelable {
 
-    private TextView textView;
-    private String display;
+    private TextView mTextView;
+    private String mDisplay;
+    private String mOperator;
 
     public StateSave(MainActivity mainActivity) {
-        textView = mainActivity.findViewById(R.id.display);
-        display = textView.getText().toString();
+        mTextView = mainActivity.findViewById(R.id.display);
+        mDisplay = mTextView.getText().toString();
+        String[] operations = new String[]{"+", "-", "/", "*", "%"};
+        for (String operation : operations) {
+            if (mDisplay.contains(operation)) {
+                mOperator = operation;
+            }
+        }
     }
 
     protected StateSave(Parcel in) {
-        display = in.readString();
+        mDisplay = in.readString();
     }
 
     public static final Creator<StateSave> CREATOR = new Creator<StateSave>() {
@@ -37,10 +44,19 @@ public class StateSave implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(display);
+        parcel.writeString(mDisplay);
+        parcel.writeString(mOperator);
     }
 
     public String getDisplayValue() {
-        return display;
+        return mDisplay;
+    }
+
+    public String getOperator() {
+        return mOperator;
+    }
+
+    public boolean getFlagIfValueFirst() {
+        return !mDisplay.equals("");
     }
 }

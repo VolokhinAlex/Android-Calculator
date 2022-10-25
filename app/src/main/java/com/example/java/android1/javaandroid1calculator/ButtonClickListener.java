@@ -1,13 +1,15 @@
 package com.example.java.android1.javaandroid1calculator;
 
+import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 public class ButtonClickListener implements View.OnClickListener {
 
-    private MainActivity mainActivity;
-    private final String INFO_TAG = "INFO_TAG";
+    private final MainActivity mainActivity;
     private Button mButtonOne;
     private Button mButtonTwo;
     private Button mButtonThree;
@@ -31,32 +33,17 @@ public class ButtonClickListener implements View.OnClickListener {
     private TextView mDisplayLabel;
     private String mOperator;
     private String mOldNumber;
-    private Double result;
+    private Double mResult;
+    private boolean mIsDot = true;
+    private boolean mIsFirstValue;
 
     public ButtonClickListener(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
-        initialization();
-        mButtonOne.setOnClickListener(this);
-        mButtonTwo.setOnClickListener(this);
-        mButtonThree.setOnClickListener(this);
-        mButtonFour.setOnClickListener(this);
-        mButtonFive.setOnClickListener(this);
-        mButtonSix.setOnClickListener(this);
-        mButtonSeven.setOnClickListener(this);
-        mButtonEight.setOnClickListener(this);
-        mButtonNine.setOnClickListener(this);
-        mButtonZero.setOnClickListener(this);
-        mButtonPoint.setOnClickListener(this);
-        mButtonMultiplication.setOnClickListener(this);
-        mButtonDivision.setOnClickListener(this);
-        mButtonMinus.setOnClickListener(this);
-        mButtonPlus.setOnClickListener(this);
-        mButtonEquals.setOnClickListener(this);
-        mButtonPercent.setOnClickListener(this);
-        mButtonDelete.setOnClickListener(this);
-        mButtonClear.setOnClickListener(this);
+        initializationWidgets();
+        initializationButtonsClickListener();
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         int widgetId = view.getId();
@@ -92,46 +79,38 @@ public class ButtonClickListener implements View.OnClickListener {
                 setValueOnDisplay((String) mButtonZero.getText());
                 break;
             case R.id.button_point:
-                setValueOnDisplay((String) mButtonPoint.getText());
+                isPressDot(mOldNumber);
                 break;
             case R.id.button_multiplication:
-                setValueOnDisplay((String) mButtonMultiplication.getText());
-                mOperator = "*";
+                isNotEmptyOperator("*");
                 break;
             case R.id.button_division:
-                setValueOnDisplay((String) mButtonDivision.getText());
-                mOperator = "/";
+                isNotEmptyOperator("/");
                 break;
             case R.id.button_plus:
-                setValueOnDisplay((String) mButtonPlus.getText());
-                mOperator = "+";
+                isNotEmptyOperator("+");
                 break;
             case R.id.button_minus:
-                setValueOnDisplay((String) mButtonMinus.getText());
-                mOperator = "-";
+                isNotEmptyOperator("-");
                 break;
             case R.id.button_result:
                 equalsValue();
-                mOperator = "=";
                 break;
             case R.id.button_percent:
-                setValueOnDisplay((String) mButtonPercent.getText());
-                mOperator = "%";
+                isNotEmptyOperator("%");
                 break;
             case R.id.button_clear:
                 mDisplayLabel.setText("");
                 break;
             case R.id.button_delete:
-                String text = mDisplayLabel.getText().toString();
-                if (text.length() <= 0) return;
-                mDisplayLabel.setText(text.substring(0, text.length() - 1));
+                deleteValueOnDisplay();
                 break;
             default:
                 throw new RuntimeException("Undefined widget id: " + widgetId);
         }
     }
 
-    public void initialization() {
+    public void initializationWidgets() {
         mButtonOne = mainActivity.findViewById(R.id.button_one);
         mButtonTwo = mainActivity.findViewById(R.id.button_two);
         mButtonThree = mainActivity.findViewById(R.id.button_three);
@@ -155,28 +134,53 @@ public class ButtonClickListener implements View.OnClickListener {
         mDisplayLabel = mainActivity.findViewById(R.id.display);
     }
 
+    public void initializationButtonsClickListener() {
+        mButtonOne.setOnClickListener(this);
+        mButtonTwo.setOnClickListener(this);
+        mButtonThree.setOnClickListener(this);
+        mButtonFour.setOnClickListener(this);
+        mButtonFive.setOnClickListener(this);
+        mButtonSix.setOnClickListener(this);
+        mButtonSeven.setOnClickListener(this);
+        mButtonEight.setOnClickListener(this);
+        mButtonNine.setOnClickListener(this);
+        mButtonZero.setOnClickListener(this);
+        mButtonPoint.setOnClickListener(this);
+        mButtonMultiplication.setOnClickListener(this);
+        mButtonDivision.setOnClickListener(this);
+        mButtonMinus.setOnClickListener(this);
+        mButtonPlus.setOnClickListener(this);
+        mButtonEquals.setOnClickListener(this);
+        mButtonPercent.setOnClickListener(this);
+        mButtonDelete.setOnClickListener(this);
+        mButtonClear.setOnClickListener(this);
+    }
+
     private void setValueOnDisplay(String text) {
-        if (mDisplayLabel.getText().toString().equals("0") && mDisplayLabel.getText().length() <= 1 && mOperator == null) {
+        if (!mIsFirstValue) {
             mDisplayLabel.setText("");
         }
-        if (result != null) {
-            mDisplayLabel.setText("");
-            result = null;
-        }
+        isNotEmptyResult();
         mDisplayLabel.append(text);
         mOldNumber = mDisplayLabel.getText().toString();
+        mIsFirstValue = true;
     }
 
     private void equalsValue() {
-        String number = mDisplayLabel.getText().toString();
-        if (number.length() > 1) {
+        String lastNumber = mDisplayLabel.getText().toString();
+        if (lastNumber.length() > 1) {
             try {
-                number = number.substring(number.lastIndexOf(mOperator) + 1);
-                if (number.length() > 1) {
-                    operations(Double.parseDouble(number));
+                lastNumber = lastNumber.substring(lastNumber.lastIndexOf(mOperator) + 1);
+                if (lastNumber.length() > 0) {
+                    operations(Double.parseDouble(lastNumber));
                 } else {
-                    operations(1);
+                    if (mOperator.equals("*") || mOperator.equals("/")) {
+                        operations(1);
+                    } else {
+                        operations(0);
+                    }
                 }
+                mIsFirstValue = true;
             } catch (NumberFormatException e) {
                 mDisplayLabel.setText("");
             }
@@ -187,25 +191,79 @@ public class ButtonClickListener implements View.OnClickListener {
         double oldNumber = Double.parseDouble(mOldNumber.substring(0, mOldNumber.lastIndexOf(mOperator)));
         switch (mOperator) {
             case "*":
-                result = oldNumber * number;
-                mDisplayLabel.setText(String.valueOf(result));
+                mResult = oldNumber * number;
+                mDisplayLabel.setText(String.format(Locale.getDefault(),"%.1f", mResult));
                 break;
             case "/":
-                result = oldNumber / number;
-                mDisplayLabel.setText(String.valueOf(result));
+                if (number == 0) {
+                    mDisplayLabel.setText(R.string.division_by_zero);
+                    mResult = 0d;
+                    return;
+                }
+                mResult = oldNumber / number;
+                mDisplayLabel.setText(String.format(Locale.getDefault(),"%.1f", mResult));
                 break;
             case "+":
-                result = oldNumber + number;
-                mDisplayLabel.setText(String.valueOf(result));
+                mResult = oldNumber + number;
+                mDisplayLabel.setText(String.format(Locale.getDefault(),"%.1f", mResult));
                 break;
             case "-":
-                result = oldNumber - number;
-                mDisplayLabel.setText(String.valueOf(result));
+                mResult = oldNumber - number;
+                mDisplayLabel.setText(String.format(Locale.getDefault(),"%.1f", mResult));
                 break;
             case "%":
-                result = oldNumber % number;
-                mDisplayLabel.setText(String.valueOf(result));
+                mResult = oldNumber / 100d;
+                mDisplayLabel.setText(String.format(Locale.getDefault(),"%.1f", mResult));
                 break;
         }
+        mOperator = null;
+    }
+
+    private void isNotEmptyResult() {
+        if (mResult != null) {
+            mDisplayLabel.setText("");
+            if (mOperator != null) {
+                mOldNumber = String.valueOf(mResult);
+                mDisplayLabel.append(mOldNumber);
+            }
+            mResult = null;
+            mIsDot = false;
+        }
+    }
+
+    private void isNotEmptyOperator(String operator) {
+        if (mOperator != null && mDisplayLabel.getText().toString().endsWith(mOperator)) {
+            deleteValueOnDisplay();
+        }
+        mOperator = operator;
+        setValueOnDisplay(operator);
+    }
+
+    private void deleteValueOnDisplay() {
+        String text = mDisplayLabel.getText().toString();
+        if (text.length() <= 0) return;
+        mDisplayLabel.setText(text.substring(0, text.length() - 1));
+    }
+
+    private void isPressDot(String number) {
+        if (!number.contains(".")) {
+            setValueOnDisplay((String) mButtonPoint.getText());
+            mIsDot = false;
+        } else if (number.contains(".") && !mIsDot) {
+            setValueOnDisplay((String) mButtonPoint.getText());
+            mIsDot = true;
+        }
+    }
+
+    public void setOldNumber(String mOldNumber) {
+        this.mOldNumber = mOldNumber;
+    }
+
+    public void setOperator(String mOperator) {
+        this.mOperator = mOperator;
+    }
+
+    public void setFlagIfValueFirst(boolean mIsFirstValue) {
+        this.mIsFirstValue = mIsFirstValue;
     }
 }
