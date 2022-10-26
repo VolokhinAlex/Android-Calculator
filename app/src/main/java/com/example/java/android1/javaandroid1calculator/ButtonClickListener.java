@@ -122,6 +122,7 @@ public class ButtonClickListener implements View.OnClickListener {
     private void deleteChars(TextView display, String text) {
         if (text.length() <= 0) return;
         display.setText(text.substring(0, text.length() - 1));
+        mOperator = null;
     }
 
     private void isPressDot(TextView display, String number, String widgetText, String operator) {
@@ -198,8 +199,24 @@ public class ButtonClickListener implements View.OnClickListener {
     }
 
     private boolean isEmptyNumber(String number, String operator) {
-        if (number == null || operator == null) return true;
+        //if (number == null || operator == null || number.equals(".") || number.equals("")) return true;
+        if (number == null || operator == null || number.equals(".")) return true;
+        if (number.contains(operator)) {
+            if (isNumber(number.substring(0, number.lastIndexOf(operator)))) {
+                return false;
+            }
+            return !isNumber(number.substring(number.lastIndexOf(operator) + 1));
+        }
         return false;
+    }
+
+    private boolean isNumber(String number) {
+        try {
+            Double.parseDouble(number);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     @SuppressLint("NonConstantResourceId")
