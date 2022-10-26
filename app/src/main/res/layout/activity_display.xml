@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="@string/display_text"
         android:textAlignment="textEnd"
-        android:textColor="@color/purple_500"
+        android:textColor="@color/white"
         android:textSize="36sp" />
 
     <View

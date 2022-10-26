@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.Locale;
 
 public class ButtonClickListener implements View.OnClickListener {
@@ -158,6 +160,7 @@ public class ButtonClickListener implements View.OnClickListener {
     }
 
     private void operations(TextView display, double oldNumber, double newNumber, String operators) {
+        if (isAllowedNumber(display, oldNumber, newNumber)) return;
         switch (operators) {
             case "*":
                 mResult = oldNumber * newNumber;
@@ -199,7 +202,6 @@ public class ButtonClickListener implements View.OnClickListener {
     }
 
     private boolean isEmptyNumber(String number, String operator) {
-        //if (number == null || operator == null || number.equals(".") || number.equals("")) return true;
         if (number == null || operator == null || number.equals(".")) return true;
         if (number.contains(operator)) {
             if (isNumber(number.substring(0, number.lastIndexOf(operator)))) {
@@ -217,6 +219,14 @@ public class ButtonClickListener implements View.OnClickListener {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    private boolean isAllowedNumber(TextView display, Double oldNumber, Double newNumber) {
+        if (oldNumber > 99999999 || newNumber > 99999999) {
+            display.setText(R.string.not_allowed_values);
+            return true;
+        }
+        return false;
     }
 
     @SuppressLint("NonConstantResourceId")
