@@ -57,6 +57,6 @@ public class StateSave implements Parcelable {
     }
 
     public boolean getFlagIfValueFirst() {
-        return !mDisplay.equals("");
+        return mDisplay.equals("");
     }
 }

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
         stateSave = savedInstanceState.getParcelable(DISPLAY_KEY);
         mDisplay.setText(stateSave.getDisplayValue());
         listener.setOldNumber(stateSave.getDisplayValue());
+        Log.e("Debug", stateSave.getDisplayValue());
         listener.setOperator(stateSave.getOperator());
-        listener.setFlagIfValueFirst(stateSave.getFlagIfValueFirst());
+        listener.setIsFirstValue(stateSave.getFlagIfValueFirst());
     }
 }
