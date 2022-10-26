@@ -4,39 +4,37 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private StateSave stateSave;
+    private StateSave mStateSave;
     private final String DISPLAY_KEY = "DISPLAY";
     private TextView mDisplay;
-    private ButtonClickListener listener;
+    private ButtonClickListener mListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listener = new ButtonClickListener(this);
+        mListener = new ButtonClickListener(this);
         mDisplay = findViewById(R.id.display);
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        stateSave = new StateSave(this);
-        outState.putParcelable(DISPLAY_KEY, stateSave);
+        mStateSave = new StateSave(this);
+        outState.putParcelable(DISPLAY_KEY, mStateSave);
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        stateSave = savedInstanceState.getParcelable(DISPLAY_KEY);
-        mDisplay.setText(stateSave.getDisplayValue());
-        listener.setOldNumber(stateSave.getDisplayValue());
-        Log.e("Debug", stateSave.getDisplayValue());
-        listener.setOperator(stateSave.getOperator());
-        listener.setIsFirstValue(stateSave.getFlagIfValueFirst());
+        mStateSave = savedInstanceState.getParcelable(DISPLAY_KEY);
+        mDisplay.setText(mStateSave.getDisplayValue());
+        mListener.setOldNumber(mStateSave.getDisplayValue());
+        mListener.setOperator(mStateSave.getOperator());
+        mListener.setIsFirstValue(mStateSave.getFlagIfValueFirst());
     }
 }

@@ -23,6 +23,7 @@ public class StateSave implements Parcelable {
 
     protected StateSave(Parcel in) {
         mDisplay = in.readString();
+        mOperator = in.readString();
     }
 
     public static final Creator<StateSave> CREATOR = new Creator<StateSave>() {

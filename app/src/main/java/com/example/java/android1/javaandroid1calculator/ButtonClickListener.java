@@ -139,8 +139,10 @@ public class ButtonClickListener implements View.OnClickListener {
         try {
             oldNumber = oldNumber.substring(0, oldNumber.lastIndexOf(operator)).replace(",", ".");
             lastNumber = lastNumber.substring(lastNumber.lastIndexOf(operator) + 1);
-            if (lastNumber.length() > 0) {
+            if (lastNumber.length() > 0 && !oldNumber.equals("")) {
                 operations(display, Double.parseDouble(oldNumber), Double.parseDouble(lastNumber), operator);
+            } else if (oldNumber.equals("")) {
+                operations(display, 0, Double.parseDouble(lastNumber), operator);
             } else {
                 if (operator.equals("*") || operator.equals("/")) {
                     operations(display, Double.parseDouble(oldNumber), 1, operator);
@@ -182,6 +184,7 @@ public class ButtonClickListener implements View.OnClickListener {
                 display.setText(String.format(Locale.getDefault(), "%.1f", mResult));
                 break;
             default:
+                mResult = 0d;
                 throw new RuntimeException("Undefined arithmetic operator: " + operators);
         }
         mOperator = null;
