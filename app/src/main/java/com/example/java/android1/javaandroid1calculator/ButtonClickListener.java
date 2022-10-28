@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Locale;
 
 public class ButtonClickListener implements View.OnClickListener {
@@ -163,7 +165,7 @@ public class ButtonClickListener implements View.OnClickListener {
         switch (operators) {
             case "*":
                 mResult = oldNumber * newNumber;
-                display.setText(String.format(Locale.getDefault(), "%.1f", mResult));
+                display.setText(stringFormatter(mResult));
                 break;
             case "/":
                 if (newNumber == 0) {
@@ -172,19 +174,19 @@ public class ButtonClickListener implements View.OnClickListener {
                     return;
                 }
                 mResult = oldNumber / newNumber;
-                display.setText(String.format(Locale.getDefault(), "%.1f", mResult));
+                display.setText(stringFormatter(mResult));
                 break;
             case "+":
                 mResult = oldNumber + newNumber;
-                display.setText(String.format(Locale.getDefault(), "%.1f", mResult));
+                display.setText(stringFormatter(mResult));
                 break;
             case "-":
                 mResult = oldNumber - newNumber;
-                display.setText(String.format(Locale.getDefault(), "%.1f", mResult));
+                display.setText(stringFormatter(mResult));
                 break;
             case "%":
                 mResult = oldNumber / 100;
-                display.setText(String.format(Locale.getDefault(), "%.1f", mResult));
+                display.setText(stringFormatter(mResult));
                 break;
             default:
                 mResult = 0d;
@@ -228,6 +230,10 @@ public class ButtonClickListener implements View.OnClickListener {
         return false;
     }
 
+    private String stringFormatter(double result) {
+        return new DecimalFormat("#.######").format(result);
+    }
+
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
@@ -269,6 +275,7 @@ public class ButtonClickListener implements View.OnClickListener {
                 break;
             case R.id.button_percent:
                 isNotEmptyOperator(mDisplayView, (String) mButtonPercent.getText());
+                equalValue(mDisplayView, mOldNumber, mOldNumber, mOperator);
                 break;
             case R.id.button_delete:
                 deleteChars(mDisplayView, mDisplayView.getText().toString());
