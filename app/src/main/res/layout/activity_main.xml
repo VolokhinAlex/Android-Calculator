@@ -4,6 +4,29 @@
     android:background="@drawable/calculate"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/light_theme"
+            android:layout_width="@dimen/button_change_theme_size"
+            android:layout_height="wrap_content"
+            android:text="@string/light_theme"
+            android:textSize="@dimen/button_text_size"
+            android:layout_marginEnd="@dimen/layout_indentation"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dark_theme"
+            android:layout_width="@dimen/button_change_theme_size"
+            android:layout_height="wrap_content"
+            android:text="@string/dark_theme"
+            android:textSize="@dimen/button_text_size" />
+
+    </LinearLayout>
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -13,12 +36,12 @@
         layout="@layout/activity_display"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp" />
+        android:layout_margin="@dimen/layout_indentation" />
 
     <include
         layout="@layout/activity_keyboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp" />
+        android:layout_margin="@dimen/layout_indentation" />
 
 </LinearLayout>

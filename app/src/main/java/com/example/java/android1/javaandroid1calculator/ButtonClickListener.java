@@ -2,35 +2,34 @@ package com.example.java.android1.javaandroid1calculator;
 
 import android.annotation.SuppressLint;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.Locale;
 
 public class ButtonClickListener implements View.OnClickListener {
 
     private final MainActivity mainActivity;
-    private Button mButtonOne;
-    private Button mButtonTwo;
-    private Button mButtonThree;
-    private Button mButtonFour;
-    private Button mButtonFive;
-    private Button mButtonSix;
-    private Button mButtonSeven;
-    private Button mButtonEight;
-    private Button mButtonNine;
-    private Button mButtonZero;
-    private Button mButtonPoint;
-    private Button mButtonMultiplication;
-    private Button mButtonDivision;
-    private Button mButtonMinus;
-    private Button mButtonPlus;
-    private Button mButtonEqual;
-    private Button mButtonPercent;
-    private Button mButtonDelete;
-    private Button mButtonClear;
+    private MaterialButton mButtonOne;
+    private MaterialButton mButtonTwo;
+    private MaterialButton mButtonThree;
+    private MaterialButton mButtonFour;
+    private MaterialButton mButtonFive;
+    private MaterialButton mButtonSix;
+    private MaterialButton mButtonSeven;
+    private MaterialButton mButtonEight;
+    private MaterialButton mButtonNine;
+    private MaterialButton mButtonZero;
+    private MaterialButton mButtonPoint;
+    private MaterialButton mButtonMultiplication;
+    private MaterialButton mButtonDivision;
+    private MaterialButton mButtonMinus;
+    private MaterialButton mButtonPlus;
+    private MaterialButton mButtonEqual;
+    private MaterialButton mButtonPercent;
+    private MaterialButton mButtonDelete;
+    private MaterialButton mButtonClear;
 
     private TextView mDisplayView;
     private String mOperator;

@@ -1,25 +1,27 @@
 <resources>
     <string name="app_name">Calculator</string>
-    <string name="button_one">1</string>
-    <string name="button_two">2</string>
-    <string name="button_three">3</string>
-    <string name="button_four">4</string>
-    <string name="button_five">5</string>
-    <string name="button_six">6</string>
-    <string name="button_seven">7</string>
-    <string name="button_eight">8</string>
-    <string name="button_nine">9</string>
-    <string name="button_zero">0</string>
-    <string name="button_pt">.</string>
-    <string name="button_plus">+</string>
-    <string name="button_minus">-</string>
-    <string name="button_division">/</string>
-    <string name="button_multiplication">*</string>
-    <string name="button_result">=</string>
-    <string name="button_delete">⌫</string>
-    <string name="button_clear">AC</string>
-    <string name="button_percent">%</string>
-    <string name="display_text">0</string>
+    <string name="button_one" translatable="false">1</string>
+    <string name="button_two" translatable="false">2</string>
+    <string name="button_three" translatable="false">3</string>
+    <string name="button_four" translatable="false">4</string>
+    <string name="button_five" translatable="false">5</string>
+    <string name="button_six" translatable="false">6</string>
+    <string name="button_seven" translatable="false">7</string>
+    <string name="button_eight" translatable="false">8</string>
+    <string name="button_nine" translatable="false">9</string>
+    <string name="button_zero" translatable="false">0</string>
+    <string name="button_pt" translatable="false">.</string>
+    <string name="button_plus" translatable="false">+</string>
+    <string name="button_minus" translatable="false">-</string>
+    <string name="button_division" translatable="false">/</string>
+    <string name="button_multiplication" translatable="false">*</string>
+    <string name="button_result" translatable="false">=</string>
+    <string name="button_delete" translatable="false">⌫</string>
+    <string name="button_clear" translatable="false">AC</string>
+    <string name="button_percent" translatable="false">%</string>
+    <string name="display_text" translatable="false">0</string>
     <string name="division_by_zero">You can\'t division by zero</string>
     <string name="not_allowed_values">Your values are not allowed</string>
+    <string name="dark_theme" translatable="false">☾</string>
+    <string name="light_theme" translatable="false">☀</string>
 </resources>
