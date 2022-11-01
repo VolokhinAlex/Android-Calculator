@@ -1,6 +1,7 @@
 package com.example.java.android1.javaandroid1calculator;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -119,6 +120,7 @@ public class ButtonClickListener implements View.OnClickListener {
             deleteChars(display, display.getText().toString());
         }
         mOperator = operator;
+        if (isMoreOperator(mOperator, mOldNumber)) return;
         setTextDisplay(display, operator);
     }
 
@@ -226,6 +228,16 @@ public class ButtonClickListener implements View.OnClickListener {
         if (oldNumber > 99999999 || newNumber > 99999999) {
             display.setText(R.string.not_allowed_values);
             return true;
+        }
+        return false;
+    }
+
+    private boolean isMoreOperator(String operator, String oldNumber) {
+        String[] operators = new String[]{"+", "-", "*", "/"};
+        for (String s : operators) {
+            if (operator != null && oldNumber.contains(s)) {
+                return isNumber(oldNumber.substring(oldNumber.lastIndexOf(s) + 1));
+            }
         }
         return false;
     }

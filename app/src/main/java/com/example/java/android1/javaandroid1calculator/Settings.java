@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.button.MaterialButton;
@@ -32,7 +33,13 @@ public class Settings extends AppCompatActivity {
         button.setOnClickListener((view) -> {
             SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.prefs, MODE_PRIVATE);
             sharedPreferences.edit().putBoolean(MainActivity.prefs_theme_name, theme).apply();
-            recreate();
+            if (Build.VERSION.SDK_INT <= 30) {
+                recreate();
+            } else {
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
         });
     }
 
