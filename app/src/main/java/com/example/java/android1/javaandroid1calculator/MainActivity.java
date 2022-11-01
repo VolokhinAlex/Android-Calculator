@@ -3,7 +3,8 @@ package com.example.java.android1.javaandroid1calculator;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.SharedPreferences;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -15,28 +16,19 @@ public class MainActivity extends AppCompatActivity {
     private final String DISPLAY_KEY = "DISPLAY";
     private TextView mDisplay;
     private ButtonClickListener mListener;
-    private MaterialButton mButtonLightTheme;
-    private MaterialButton mButtonDarkTheme;
-    private static final String prefs = "prefs.xml";
-    private static final String prefs_theme_name = "theme";
+    private MaterialButton mButtonSettingActivity;
+    public static final String prefs = "prefs.xml";
+    public static final String prefs_theme_name = "theme";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        boolean isLightTheme = getSharedPreferences(prefs, MODE_PRIVATE).
-                getBoolean(prefs_theme_name, true);
-        if (isLightTheme) {
-            setTheme(R.style.ThemeLight);
-        } else {
-            setTheme(R.style.ThemeDark);
-        }
+        setTheme();
         setContentView(R.layout.activity_main);
-        mButtonLightTheme = findViewById(R.id.light_theme);
-        mButtonDarkTheme = findViewById(R.id.dark_theme);
+        mButtonSettingActivity = findViewById(R.id.button_setting_activity);
         mListener = new ButtonClickListener(this);
         mDisplay = findViewById(R.id.display);
-        clickListener(mButtonLightTheme, true);
-        clickListener(mButtonDarkTheme, false);
+        openActivity(mButtonSettingActivity, MainActivity.this, Settings.class);
     }
 
     @Override
@@ -56,12 +48,21 @@ public class MainActivity extends AppCompatActivity {
         mListener.setIsFirstValue(mStateSave.getFlagIfValueFirst());
     }
 
-    private void clickListener(MaterialButton button, boolean theme) {
+    private void openActivity(MaterialButton button, Context currentContext, Class<?> classToSwitch) {
         button.setOnClickListener((view) -> {
-            SharedPreferences sharedPreferences = getSharedPreferences(prefs, MODE_PRIVATE);
-            sharedPreferences.edit().putBoolean(prefs_theme_name, theme).apply();
-            recreate();
+            Intent intent = new Intent(currentContext, classToSwitch);
+            startActivity(intent);
         });
+    }
+
+    protected void setTheme() {
+        boolean isLightTheme = getSharedPreferences(MainActivity.prefs, MODE_PRIVATE).
+                getBoolean(prefs_theme_name, true);
+        if (isLightTheme) {
+            setTheme(R.style.ThemeLight);
+        } else {
+            setTheme(R.style.ThemeDark);
+        }
     }
 
 

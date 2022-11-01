@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ButtonSettingsStyle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_back_to_calculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back_to_calculate"
+        android:textSize="@dimen/button_text_size" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/app_name_settings"
+        android:textSize="@dimen/settings_title_size" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/light_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/on_light_theme"
+        android:textSize="@dimen/button_text_size" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dark_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/on_dark_theme"
+        android:textSize="@dimen/button_text_size" />
+
+</LinearLayout>

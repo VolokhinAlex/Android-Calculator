@@ -17,4 +17,9 @@
         <item name="strokeWidth">@dimen/stroke_width</item>
     </style>
 
+    <style name="ButtonSettingsStyle" parent="Theme.JavaAndroid1Calculator">
+        <item name="android:layout_marginEnd">@dimen/layout_indentation</item>
+        <item name="android:layout_marginStart">@dimen/layout_indentation</item>
+    </style>
+
 </resources>

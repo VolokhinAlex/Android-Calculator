@@ -10,4 +10,5 @@
     <dimen name="divider_height">2dp</dimen>
     <dimen name="divider_margin_top">10dp</dimen>
     <dimen name="layout_indentation">10dp</dimen>
+    <dimen name="settings_title_size">36sp</dimen>
 </resources>

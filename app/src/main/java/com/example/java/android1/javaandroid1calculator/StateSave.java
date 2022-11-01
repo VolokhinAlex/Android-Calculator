@@ -1,8 +1,14 @@
 package com.example.java.android1.javaandroid1calculator;
 
+import static android.content.Intent.getIntent;
+
+import android.content.Intent;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.widget.TextView;
+
+import java.util.Set;
 
 public class StateSave implements Parcelable {
 
@@ -60,4 +66,5 @@ public class StateSave implements Parcelable {
     public boolean getFlagIfValueFirst() {
         return mDisplay.equals("");
     }
+
 }

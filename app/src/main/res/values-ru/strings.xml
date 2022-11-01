@@ -3,4 +3,8 @@
     <string name="app_name">Калькулятор</string>
     <string name="division_by_zero">Нельзя делить на ноль</string>
     <string name="not_allowed_values">Ваши числа являются недопустимыми</string>
+    <string name="back_to_calculate">Назад</string>
+    <string name="app_name_settings">Настройки</string>
+    <string name="on_light_theme">Включить светлую тему</string>
+    <string name="on_dark_theme">Включить темную тему</string>
 </resources>
