@@ -120,13 +120,14 @@ public class ButtonClickListener implements View.OnClickListener {
             deleteChars(display, display.getText().toString());
         }
         mOperator = operator;
-        if (isMoreOperator(mOperator, mOldNumber)) return;
+        if (isMoreOperator(mOperator, display.getText().toString())) return;
         setTextDisplay(display, operator);
     }
 
     private void deleteChars(TextView display, String text) {
         if (text.length() <= 0) return;
         display.setText(text.substring(0, text.length() - 1));
+        if (mOperator != null && isNumber(text.substring(text.lastIndexOf(mOperator) + 1))) return;
         mOperator = null;
     }
 
@@ -236,7 +237,11 @@ public class ButtonClickListener implements View.OnClickListener {
         String[] operators = new String[]{"+", "-", "*", "/"};
         for (String s : operators) {
             if (operator != null && oldNumber.contains(s)) {
-                return isNumber(oldNumber.substring(oldNumber.lastIndexOf(s) + 1));
+                if (isNumber(oldNumber.substring(oldNumber.lastIndexOf(s) + 1))) {
+                    return true;
+                } else {
+                    deleteChars(mDisplayView, oldNumber);
+                }
             }
         }
         return false;

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private MaterialButton mButtonSettingActivity;
     public static final String prefs = "prefs.xml";
     public static final String prefs_theme_name = "theme";
+    public static final String prefs_display_key = "display.key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,5 @@ public class MainActivity extends AppCompatActivity {
             setTheme(R.style.ThemeDark);
         }
     }
-
 
 }
